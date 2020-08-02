@@ -1,0 +1,49 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card mt-2">
+                <div class="card-title text-center">Nueva Categoria</div>
+                <div class="card-body">
+                  <form>
+                    <label>Nombre</label>
+                    <input type="text" class="form-control">
+                    <label>Descripcion</label><br>
+                    <textarea class="form-control rounded-0" id="exampleFormControlTextarea1" rows="10"></textarea>
+                  </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+        <!--Inicio Tabla categorias-->
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Descripcion</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr *ngFor="let categoria of Categorias">
+                <th>{{categoria.strNombre}}</th>
+                <td>{{categoria.strDescripcion}}</td>
+                <td>
+                  <div class="btn-group">
+                  <button class="btn btn-primary">Editar</button>
+                  <button class="btn btn-danger">Eliminar</button>
+                </div>
+                </td>
+              </tr>
+            </tbody>
+            
+
+          </table>
+        <!--Fin tabla Categorias-->
+
+        </div>
+    </div>
+
+</div>
+
+<button (click)="getCategorias()" class="btn btn-primary">Mostrar Categorias</button>
