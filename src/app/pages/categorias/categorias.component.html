@@ -4,18 +4,21 @@
             <div class="card mt-2">
                 <div class="card-title text-center">Nueva Categoria</div>
                 <div class="card-body">
-                  <form>
-                    <label>Nombre</label>
-                    <input type="text" class="form-control">
-                    <label>Descripcion</label><br>
-                    <textarea class="form-control rounded-0" id="exampleFormControlTextarea1" rows="10"></textarea>
-                  </form>
+                <!--Incio Formulario-->
+                <form [formGroup]= "form" (ngSubmit)="postCategorias($event)">
+                  <label>Nombre</label>
+                  <input  class="form-control" type="text" formControlName="strNombre"><br>
+                    <label>Descripcion</label>
+                  <textarea class="form-control rounded-0" rows="10" formControlName="strDescripcion"></textarea>
+                  <button type="submit" class="btn" [disabled]="form.invalid">Guardar</button>
+                </form>
+                <!--Fin formulario-->
                 </div>
             </div>
         </div>
         <div class="col-md-8">
         <!--Inicio Tabla categorias-->
-          <table class="table">
+          <table class="table" >
             <thead>
               <tr>
                 <th>Nombre</th>
@@ -25,13 +28,13 @@
             </thead>
 
             <tbody>
-              <tr *ngFor="let categoria of Categorias">
+              <tr *ngFor="let categoria of Categorias" >
                 <th>{{categoria.strNombre}}</th>
-                <td>{{categoria.strDescripcion}}</td>
+                <td style="word-break:break-all  ;">{{categoria.strDescripcion}}</td>
                 <td>
                   <div class="btn-group">
                   <button class="btn btn-primary">Editar</button>
-                  <button class="btn btn-danger">Eliminar</button>
+                  <button class="btn btn-danger" (click)="deleteCategoria(categoria._id)" value=categoria._id>Eliminar</button>
                 </div>
                 </td>
               </tr>
@@ -40,8 +43,7 @@
 
           </table>
         <!--Fin tabla Categorias-->
-
-        </div>
+</div>
     </div>
 
 </div>
